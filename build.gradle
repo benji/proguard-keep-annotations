@@ -17,6 +17,11 @@ dependencies{
   compile group: 'org.springframework', name: 'spring-context', version: '5.0.7.RELEASE'
 }
 
+task exportLibs(type: Copy) {
+  into "$buildDir/dependencies"
+  from configurations.runtime
+}
+
 task obfuscate(type: proguard.gradle.ProGuardTask) {
     configuration "$projectDir/proguard.conf"
     injars "$buildDir/libs/proguard-keep-annotations.jar"
@@ -24,6 +29,6 @@ task obfuscate(type: proguard.gradle.ProGuardTask) {
 }
 
 task run(type: JavaExec) {
-   classpath = files('build/libs/proguard-keep-annotations-obfuscated.jar')
+   classpath = files('build/libs/proguard-keep-annotations-obfuscated.jar') + sourceSets.main.runtimeClasspath
    main = 'com.github.benji.proguard.TestClassHasAnnotation'
 }

@@ -2,7 +2,7 @@
 
 Usage
 ----
- `$ gradle clean jar obfuscate run`
+ `$ gradle clean jar exportLibs obfuscate run`
 
 Output
 ----
@@ -13,12 +13,13 @@ Output
 :processResources NO-SOURCE
 :classes
 :jar
+:exportLibs
 :obfuscate
 :run
 Class name: com.github.benji.proguard.TheAnnotatedClass
-No annotation found on class com.github.benji.proguard.TheAnnotatedClass
+Annotation found: org.springframework.stereotype.Service
 
 BUILD SUCCESSFUL
 
-Total time: 1.049 secs
+Total time: 1.532 secs
 ```
